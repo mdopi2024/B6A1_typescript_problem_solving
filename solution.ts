@@ -104,7 +104,7 @@ type Book2 = {
 }
 const printBookDetails = (book: Book2) => {
     const { title, author, publishedYear, isAvailable } = book
-    console.log(`Title: ${title}, Author: ${author}, Published: ${publishedYear}, Available: ${isAvailable ? 'Yes' : 'No'}`)
+    return `Title: ${title}, Author: ${author}, Published: ${publishedYear}, Available: ${isAvailable ? 'Yes' : 'No'}`
 };
 
 const myBook: Book2 = {
@@ -120,27 +120,44 @@ const printBook = printBookDetails(myBook)
 //problem 7
 
 type StringNumber = string[] | number[]
-type StringNumber2 = (string | number)[]
+type StringNumber2 = (string | number)[] | number[] | string[]
 
-// const getUniqueValues = (array1: StringNumber, array2: StringNumber): StringNumber => {
-//     const unicArray: StringNumber2 = []
-//     for (let i of array1) {
-//         if (!unicArray.includes(i)) {
-//             unicArray.push(i)
-//         }
-//     }
-//     for (let i of array2) {
-//         if (!unicArray.includes(i)) {
-//             unicArray.push(i)
-//         }
-//     }
+const getUniqueValues = (array1: StringNumber, array2: StringNumber): StringNumber2 => {
+    const unicArray: StringNumber2 = []
+    for (let i of array1) {
+        let isExist = false;
+        for (let j = 0; j < unicArray.length; j++) {
+            if (unicArray[j] === i) {
+                isExist = true;
+                break;
+            }
+        }
+        if (!isExist) {
+            unicArray[unicArray.length] = i
+        }
+    }
+    for (let i of array2) {
+        let isExist = false;
 
-// }
+        for (let j = 0; j < unicArray.length; j++) {
+            if (unicArray[j] === i) {
+                isExist = true;
+                break;
+            }
+        }
+        if (!isExist) {
+             unicArray[unicArray.length] = i
+        }
+    }
+    return unicArray;
 
-// const array1 = [1, 2, 3, 4, 5, 3, 2, 1];
-// const array2 = ['hello', 'hello', 'opi', 'kasem']
+}
 
-// const unicValue = getUniqueValues(array1, array2)
+const array1 = [1, 2, 3, 4, 5, 3, 2, 1];
+const array2 = [1, 2, 3, 4, 5, 3, 2, 1];
+
+const unicValue = getUniqueValues(array1, array2)
+
 
 
 
@@ -154,13 +171,13 @@ type Product = {
 
 const calculateTotalPrice = (productArray: Product[]): number => {
 
-  const totalAmount = productArray.reduce((amount,product)=>{
-    const totalPrice = product.price* product.quantity;
-    const discountPrice = product.discount ? (totalPrice*product.discount)/100 : 0;
-   return amount += (totalPrice - discountPrice)
-  },0)
+    const totalAmount = productArray.reduce((amount, product) => {
+        const totalPrice = product.price * product.quantity;
+        const discountPrice = product.discount ? (totalPrice * product.discount) / 100 : 0;
+        return amount += (totalPrice - discountPrice)
+    }, 0)
 
-  return totalAmount;
+    return totalAmount;
 
 }
 
@@ -171,4 +188,13 @@ const products = [
 ];
 
 const totalPrice = calculateTotalPrice(products)
-console.log(totalPrice)
+
+
+
+
+
+
+
+
+
+
