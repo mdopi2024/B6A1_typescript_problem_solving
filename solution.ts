@@ -39,7 +39,7 @@ class Person {
     }
 
     getDetails() {
-        return ` 'Name: ${this.name}, Age: ${this.age}';`
+        return ` 'Name: ${this.name}, Age: ${this.age}'`
     }
 }
 
@@ -116,3 +116,64 @@ const myBook: Book2 = {
 
 const printBook = printBookDetails(myBook)
 
+
+//problem 7
+
+type StringNumber = string[] | number[]
+type StringNumber2 = (string | number)[]
+
+// const getUniqueValues = (array1: StringNumber, array2: StringNumber): StringNumber => {
+//     const unicArray: StringNumber2 = []
+//     for (let i of array1) {
+//         if (!unicArray.includes(i)) {
+//             unicArray.push(i)
+//         }
+//     }
+//     for (let i of array2) {
+//         if (!unicArray.includes(i)) {
+//             unicArray.push(i)
+//         }
+//     }
+
+// }
+
+// const array1 = [1, 2, 3, 4, 5, 3, 2, 1];
+// const array2 = ['hello', 'hello', 'opi', 'kasem']
+
+// const unicValue = getUniqueValues(array1, array2)
+
+
+
+//problem 8
+type Product = {
+    name: string;
+    price: number;
+    quantity: number;
+    discount?: number;
+}
+
+const calculateTotalPrice = (productArray: Product[]): number => {
+
+  const totalAmount = productArray.reduce((amount,product)=>{
+    if(product.discount){
+         const totalAmount = product.price*product.quantity;
+        const discountPrice = ((totalAmount*product.discount)/100)
+        amount += (totalAmount-discountPrice)
+    }else{
+          const totalAmount2 = product.price*product.quantity;
+          amount += totalAmount2   
+    }
+    return amount
+  },0)
+
+  return totalAmount;
+
+}
+
+const products = [
+    { name: 'Pen', price: 10, quantity: 2 },
+    { name: 'Notebook', price: 25, quantity: 3, discount: 10 },
+    { name: 'Bag', price: 50, quantity: 1, discount: 20 },
+];
+
+const totalPrice = calculateTotalPrice(products)
