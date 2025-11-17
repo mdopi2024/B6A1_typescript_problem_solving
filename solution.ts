@@ -155,15 +155,9 @@ type Product = {
 const calculateTotalPrice = (productArray: Product[]): number => {
 
   const totalAmount = productArray.reduce((amount,product)=>{
-    if(product.discount){
-         const totalAmount = product.price*product.quantity;
-        const discountPrice = ((totalAmount*product.discount)/100)
-        amount += (totalAmount-discountPrice)
-    }else{
-          const totalAmount2 = product.price*product.quantity;
-          amount += totalAmount2   
-    }
-    return amount
+    const totalPrice = product.price* product.quantity;
+    const discountPrice = product.discount ? (totalPrice*product.discount)/100 : 0;
+   return amount += (totalPrice - discountPrice)
   },0)
 
   return totalAmount;
@@ -177,3 +171,4 @@ const products = [
 ];
 
 const totalPrice = calculateTotalPrice(products)
+console.log(totalPrice)
