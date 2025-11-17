@@ -44,10 +44,33 @@ class Person {
 }
 
 const person1 = new Person('John Doe', 30);
-console.log(person1.getDetails());
-
 const person2 = new Person('Alice', 25);
-console.log(person2.getDetails());
+
+
+//problem 4
+
+type Book={
+    title:string;
+    rating:number;
+}
+
+
+const filterByRating =<T extends Book>(bookArray:T[]):T[]=>{
+ const filtered = bookArray.filter(book=> book.rating >=4);
+ return filtered;
+}
+
+
+const books = [
+  { title: 'Book A', rating: 4.5 },
+  { title: 'Book B', rating: 3.2 },
+  { title: 'Book C', rating: 5.0 },
+]
+
+const filteredBooks = filterByRating(books)
+
+
+
 
 
 
