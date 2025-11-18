@@ -26,14 +26,12 @@
 - যদি আমাদের অবজেক্ট ছাড়াও Union, Array, Number, String বা Boolean টাইপ তৈরি করতে হয়, তাহলে Type ব্যবহার করাই ভালো।
 
 
-
+---
 
 
 # TypeScript-এ Union এবং Intersection Types উদাহরণ
 
 * আমরা TypeScript-এ Union এবং Intersection ব্যবহার করে বিভিন্ন টাইপ সংজ্ঞায়িত করি 
-
----
 
 ### ১. Union Type 
 
