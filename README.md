@@ -24,3 +24,52 @@
 ### ৪. সারসংক্ষেপ
 - যদি আমাদের অবজেক্ট তৈরি করতে হয়, তাহলে Interface ব্যবহার করাই ভালো।  
 - যদি আমাদের অবজেক্ট ছাড়াও Union, Array, Number, String বা Boolean টাইপ তৈরি করতে হয়, তাহলে Type ব্যবহার করাই ভালো।
+
+
+
+
+
+# TypeScript-এ Union এবং Intersection Types উদাহরণ
+
+* আমরা TypeScript-এ Union এবং Intersection ব্যবহার করে বিভিন্ন টাইপ সংজ্ঞায়িত করি 
+
+---
+
+### ১. Union Type 
+
+- Union Type ব্যবহার করা হয় যখন একটি ভেরিয়েবল একাধিক টাইপের মধ্যে যেকোনো একটি মান রাখতে পারে।  
+
+- Example :
+
+- type StringOrNumber = string | number;
+
+- const age:StringOrNumber = 23; 
+- const name:StringOrNumber = 'x'
+
+
+### 2. Intersection Type
+
+- Union Type ব্যবহার করা হয় যখন একটি ভেরিয়েবল একাধিক টাইপের মধ্যে যেকোনো একটি মান রাখতে পারে।
+
+- Example :
+
+interface Pesrson1 {
+    name : string;
+    age: number;
+}
+
+interface Pesrson2 {
+     isMarried: boolean;
+}
+
+const person : Pesrson1 & Pesrson2 = {
+     name : "x",
+     age: 10,
+    isMarried: true / false;
+}
+
+### ৩. সারসংক্ষেপ
+
+- যদি আমাদের ভেরিয়েবল একাধিক টাইপের মধ্যে যেকোনো একটি মান রাখতে পারে, তাহলে Union Type ব্যবহার করাই ভালো।
+
+- যদি আমাদের ভেরিয়েবল একাধিক টাইপের সব বৈশিষ্ট্য একসাথে রাখতে হয়, তাহলে Intersection Type ব্যবহার করাই ভালো।
