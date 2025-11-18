@@ -1,8 +1,8 @@
-// problem 1;
+
 
 type FormatValueType = string | number | boolean;
 
-const formatValue = <T extends FormatValueType>(value: FormatValueType): FormatValueType => {
+const formatValue = (value: FormatValueType): FormatValueType => {
     if (typeof value === 'string') {
         return value.toUpperCase()
     } else if (typeof value === 'number') {
@@ -12,9 +12,9 @@ const formatValue = <T extends FormatValueType>(value: FormatValueType): FormatV
     }
 }
 
-const formatedValue = formatValue('hello world')
 
-// problem 2
+
+
 type GetLengthType = string | any[]
 const getLength = (value: GetLengthType): number => {
     if (Array.isArray(value)) {
@@ -24,10 +24,8 @@ const getLength = (value: GetLengthType): number => {
     }
 }
 
-const gotLength = getLength('my name is opi korim')
 
 
-//problem 3
 
 class Person {
     name: string;
@@ -43,33 +41,24 @@ class Person {
     }
 }
 
-const person1 = new Person('John Doe', 30);
-const person2 = new Person('Alice', 25);
 
 
-//problem 4
 
-type Book = {
+
+type Book2 = {
     title: string;
     rating: number;
 }
 
 
-const filterByRating = (bookArray: Book[]): Book[] => {
+const filterByRating = (bookArray: Book2[]): Book2[] => {
     const filtered = bookArray.filter(book => book.rating >= 4);
     return filtered;
 }
 
-const books = [
-    { title: 'Book A', rating: 4.5 },
-    { title: 'Book B', rating: 3.2 },
-    { title: 'Book C', rating: 5.0 },
-]
-
-const filteredBooks = filterByRating(books)
 
 
-//problem 5
+
 
 type User = {
     id: number;
@@ -83,41 +72,24 @@ const filterActiveUsers = (users: User[]): User[] => {
     return filterUsers
 }
 
-const users = [
-    { id: 1, name: 'Rakib', email: 'rakib@example.com', isActive: true, },
-    { id: 2, name: 'Asha', email: 'asha@example.com', isActive: false },
-    { id: 3, name: 'Rumi', email: 'rumi@example.com', isActive: true },
-];
 
 
-const activeUsers = filterActiveUsers(users)
 
 
-// problem 6
-
-type Book2 = {
+type Book = {
     title: string;
     author: string;
     publishedYear: number;
     isAvailable: boolean;
 
 }
-const printBookDetails = (book: Book2) => {
+const printBookDetails = (book: Book) => {
     const { title, author, publishedYear, isAvailable } = book
     return `Title: ${title}, Author: ${author}, Published: ${publishedYear}, Available: ${isAvailable ? 'Yes' : 'No'}`
 };
 
-const myBook: Book2 = {
-    title: 'The Great Gatsby',
-    author: 'F. Scott Fitzgerald',
-    publishedYear: 1925,
-    isAvailable: true,
-};
-
-const printBook = printBookDetails(myBook)
 
 
-//problem 7
 
 type StringNumber = string[] | number[]
 type StringNumber2 = (string | number)[] | number[] | string[]
@@ -153,15 +125,10 @@ const getUniqueValues = (array1: StringNumber, array2: StringNumber): StringNumb
 
 }
 
-const array1 = [1, 2, 3, 4, 5, 3, 2, 1];
-const array2 = [1, 2, 3, 4, 5, 3, 2, 1];
-
-const unicValue = getUniqueValues(array1, array2)
 
 
 
 
-//problem 8
 type Product = {
     name: string;
     price: number;
@@ -180,21 +147,5 @@ const calculateTotalPrice = (productArray: Product[]): number => {
     return totalAmount;
 
 }
-
-const products = [
-    { name: 'Pen', price: 10, quantity: 2 },
-    { name: 'Notebook', price: 25, quantity: 3, discount: 10 },
-    { name: 'Bag', price: 50, quantity: 1, discount: 20 },
-];
-
-const totalPrice = calculateTotalPrice(products)
-
-
-
-
-
-
-
-
 
 
